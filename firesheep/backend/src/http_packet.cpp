@@ -159,7 +159,6 @@ int HttpPacket::header_field_cb(const char *buf, size_t len)
   
   if (!m_tmp_header_value.empty()) {
     add_header(m_tmp_header_name, m_tmp_header_value);
-    cout << m_tmp_header_name << endl;
     m_tmp_header_name.clear();
     m_tmp_header_value.clear();
   }

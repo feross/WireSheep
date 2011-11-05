@@ -97,22 +97,30 @@ int main(int argc, const char *argv[])
 void received_packet(HttpPacket *packet)
 {
   
-  // if(packet->isResponse()) {
+  json_spirit::Object data_obj;
   
-    json_spirit::Object data_obj;
-    data_obj.push_back(json_spirit::Pair("from",      packet->from()));
-    data_obj.push_back(json_spirit::Pair("to",        packet->to()));
+  if(packet->isResponse()) {
+    data_obj.push_back(json_spirit::Pair("isResponse",true));
+    data_obj.push_back(json_spirit::Pair("serverIP",  packet->from()));
+    data_obj.push_back(json_spirit::Pair("userIP",    packet->to()));
+    
+    data_obj.push_back(json_spirit::Pair("id",        packet->get_id()));
+    data_obj.push_back(json_spirit::Pair("mimeType",  packet->mime_type()));
+  } else {
+    data_obj.push_back(json_spirit::Pair("isResponse",false));
+    data_obj.push_back(json_spirit::Pair("serverIP",  packet->to()));
+    data_obj.push_back(json_spirit::Pair("userIP",    packet->from()));   
+    
     data_obj.push_back(json_spirit::Pair("method",    packet->method()));
     data_obj.push_back(json_spirit::Pair("path",      packet->path()));
     data_obj.push_back(json_spirit::Pair("query",     packet->query()));
     data_obj.push_back(json_spirit::Pair("host",      packet->host()));
     data_obj.push_back(json_spirit::Pair("cookies",   packet->cookies()));
     data_obj.push_back(json_spirit::Pair("userAgent", packet->user_agent()));
-    data_obj.push_back(json_spirit::Pair("mimeType",  packet->mime_type()));
+  }
   
-    string data = json_spirit::write_string(json_spirit::Value(data_obj), false);
-    cout << data << endl;
-  // } 
+  string data = json_spirit::write_string(json_spirit::Value(data_obj), false);
+  cout << data << endl;
 }
 
 void list_interfaces(AbstractPlatform *platform)
