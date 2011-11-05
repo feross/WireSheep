@@ -3,3 +3,5 @@ fireflock.app
 fireflock.exe
 fireflock
 *.o
+moc_fireflock.cpp
+moc_mainwindow.cpp
