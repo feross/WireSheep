@@ -1,0 +1,24 @@
+prefwindow {
+  height: 350px;
+}
+
+caption {
+  font-weight: bold;
+}
+
+#websitesPane splitter {
+  -moz-appearance: none; 
+  width: 1px;
+  min-width: 1px;
+  background: #B4B4B4;
+}
+
+#websitesPane textbox {
+  -moz-appearance: none; 
+  margin: 0;
+  border: 0;
+}
+
+#scriptText {
+  font-family: monospace;
+}

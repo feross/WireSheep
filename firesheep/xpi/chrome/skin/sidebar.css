@@ -1,0 +1,69 @@
+#firesheepSidebar #toolbar {
+  padding: 6px;
+  border-bottom: 1px solid threedshadow;
+}
+
+#firesheepSidebar richlistbox {
+  margin: 0;
+  -moz-appearance: none; 
+}
+
+#detailsTree {
+  -moz-appearance: none;
+  margin: 0;
+  border: 0;
+  height: 150px;
+}
+
+#detailsTree treechildren::-moz-tree-cell-text(nullValue) {
+  color: #333;
+  font-style: italic;
+}
+
+#detailsTree treechildren::-moz-tree-cell-text(nullValue, selected) {
+  color: white;
+}
+
+splitter {
+  -moz-appearance: none;
+  min-height: 0;
+  height: 1px;
+  background: #B4B4B4;
+}
+
+#bottombar {
+  border-top: 1px solid threedshadow;
+}
+
+#bottombar button {
+  -moz-appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0px 0 0 -1px !important;
+  min-height: 23px;
+  max-height: 23px;
+}
+
+#toggleDetailsButton {
+  background: url(chrome://firesheep/skin/details_button.png);
+  min-width: 33px;
+  max-width: 33px;
+}
+
+#toggleDetailsButton:active {
+  background: url(chrome://firesheep/skin/details_button_pressed.png);
+}
+
+#showMenuButton {
+  background: url(chrome://firesheep/skin/menu_button.png); 
+  min-width: 32px;
+  max-width: 32px;
+}
+
+#showMenuButton:active {
+  background: url(chrome://firesheep/skin/menu_button_pressed.png);
+}
+
+#splitterHandle {
+  display: none !important;
+}
