@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <a id="startCapture" href="#">Start capture</a>
+  </body>
+</html>
+
+<script type="text/javascript">
+  window.Client = {
+    handlePacket: function(data) {
+      alert(data);
+    }
+  }
+
+  $(function() {
+    Fireflock.handlePacket.connect(window.Client, 'handlePacket');
+
+    $('#startCapture').click(function() {
+      Fireflock.startCapture();
+    });
+  });
+
+
+</script>
