@@ -24,7 +24,7 @@ MainWin::MainWin(QWidget * parent) : QWebView(parent)
     QObject::connect(page()->mainFrame(), SIGNAL(javaScriptWindowObjectCleared()),
                      this, SLOT(addJSObject()));
 
-    // qrc:// URLs refer to resources. See imagenalayzer.qrc
+    // qrc:// URLs refer to resources. See fireflock.qrc
     QUrl startURL = QUrl("qrc:/index.html");
 
     // Load web content now!

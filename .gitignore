@@ -6,3 +6,4 @@ fireflock
 moc_fireflock.cpp
 moc_mainwindow.cpp
 qrc_fireflock.cpp
+Makefile

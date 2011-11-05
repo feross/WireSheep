@@ -1,6 +1,5 @@
 <!DOCTYPE RCC><RCC version="1.0">
  <qresource>
-   <!-- Keep this in alphabetical order -->
 	<file>css/style.css</file>
 	<file>index.html</file>
 	<file>js/libs/jquery-1.6.2.min.js</file>
