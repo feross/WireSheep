@@ -1,6 +1,6 @@
 #include <QThread>
 
-class FlockBackend : public QThread
+class FlockBackend : public virtual QThread
 {
   Q_OBJECT
   
