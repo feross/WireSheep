@@ -20,9 +20,18 @@
 
 <body>
 
-  <!-- <script id="eventTemplate" type="text/x-jquery-tmpl">
-      <tr><td>Director: ${Director}</td></tr>
-  </script> -->
+  <script id="storyTemplate" type="text/x-jquery-tmpl">
+    <a href="${href}" class="story clearfix">
+      <img class="favicon" src="${favicon}">
+      <span class="desc">{{html desc}}</span>
+    </a>
+  </script>
+
+  <script id="userTemplate" type="text/x-jquery-tmpl">
+    <div id="user${num}" class="user">
+      <h1>${name}</h1>
+    <div class="stories"></div>
+  </script>
 
   <div id="container">
     <header id="menu">
@@ -72,27 +81,8 @@
             <img class="favicon" src="img/favicon.gif">
             <span class="desc">Visited <b>Greek prime minister set to form new government - CNN.com</b>.</span>
           </a>
-          <a href="#" class="story clearfix">
-            <img class="favicon" src="img/favicon.gif">
-            <span class="desc">Visited <b>Greek prime minister set to form new government - CNN.com</b>.</span>
-          </a>
 
         </div>
-      </div>
-      <div class="user">
-        Text
-      </div>
-      <div class="user">
-        Text
-      </div>
-      <div class="user">
-        Text
-      </div>
-      <div class="user">
-        Text
-      </div>
-      <div class="user">
-        Text
       </div>
     </div>
     <footer>
@@ -103,6 +93,7 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+  <script src="js/mylibs/jquery.tmpl.js"></script>
 
   <script src="js/plugins.js"></script>
   <script src="js/stories/request.js"></script>
