@@ -1,5 +1,5 @@
 //Set up the renderers
-stories = [requestStory];
+stories = [requestStory, youtubeStory];
 
 
 window.Client = {
@@ -17,37 +17,51 @@ window.Client = {
   },
 
   renderStory: function(userIndex, storyData) {
+    log(storyData);
+    log(userIndex);
     if ($("#user"+userIndex).length == 0) {
       this.addUser(userIndex);
     }
-    $("#storyTemplate").tmpl(storyData).appendTo("#user"+userIndex+" .stories");
+
+    var story = $("#storyTemplate").tmpl(storyData);
+    story
+      .hide()
+      .prependTo("#user"+userIndex+" .stories")
+      .slideDown('fast');
+
   },
 
   addUser: function(userIndex) {
-    $("#userTemplate").tmpl({num: userIndex, name: "User " + num}).appendTo("#main");
+    $("#userTemplate").tmpl({
+      num: userIndex,
+      name: "User " + userIndex
+    }).appendTo("#main");
   },
 
   setup: function() {
     // Hook up the handlePacket Qt event to the Client.handlePacket JS function
-
     window.Fireflock && Fireflock.handlePacket.connect(this, 'handlePacket');
 
     $('#startCapture').click(function() {
       window.Fireflock && Fireflock.startCapture();
     });
 
-    var that = this;
-    $('#simulatePacket').click(function(){
-      var testPacket = {"type":"request", "path":"/home.php", "userIP":"127.0.0.1", "hostname":"www.nikilster.com"};
-      var testPacket2 = {"type":"request", "path":"/home.php", "userIP":"100.0.0.1", "hostname":"www.nikilster.com"};
-      that.handlePacket(testPacket);
-      that.handlePacket(testPacket2);
-
-  })
   }
 }
 
 $(function() {
   Client.setup();
+  sim();
 });
 
+
+function sim() {
+  var testPacket = {"type":"request", "path":"/home.php", "userIP":"127.0.0.1", "hostname":"www.nikilster.com"};
+  var testPacket2 = {"type":"request", "path":"/watch?v=RF9PFJI_t5I&feature=feedrec_grec_index", "userIP":"100.0.0.1", "hostname":"www.youtube.com"};
+  Client.handlePacket(testPacket);
+  Client.handlePacket(testPacket);
+  Client.handlePacket(testPacket);
+  Client.handlePacket(testPacket);
+  Client.handlePacket(testPacket);
+  Client.handlePacket(testPacket2);
+}
