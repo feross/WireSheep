@@ -4,6 +4,7 @@
 #include <QWebFrame>
 #include <QWebElementCollection>
 #include <QNetworkDiskCache>
+#include <QWebSettings>
 
 class UserAgentWebPage : public QWebPage {
   QString userAgentForUrl(const QUrl &url ) const {
@@ -36,14 +37,18 @@ MainWin::MainWin(QWidget * parent) : QWebView(parent)
     // qrc:// URLs refer to resources. See fireflock.qrc
     QUrl startURL = QUrl("qrc:/index.html");
 
-    // Load web content now!
-		setUrl(startURL);
+    // disable same origin
+    page()->settings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
+    page()->settings()->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
+
 
     m_fireflock->startCapture();
+
+    // Load web content now!
+    setUrl(startURL);
 }
 
 void MainWin::addJSObject() {
     // Add fireflock to JavaScript Frame as member "fireflock".
     page()->mainFrame()->addToJavaScriptWindowObject(QString("Fireflock"), m_fireflock);
 }
-
