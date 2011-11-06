@@ -62,25 +62,160 @@ table { border-collapse: collapse; border-spacing: 0; }
 td { vertical-align: top; }
 
 
-/* ==|== primary styles =====================================================
-   Author:
-   ========================================================================== */
+/* clean gray from http://hellohappy.org/css3-buttons/
+*******************************************************************************/
+/* blue pill (inspired by iTunes)
+*******************************************************************************/
+button.blue-pill {
+  background-color: #a5b8da;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#a5b8da), to(#7089b3));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #a5b8da, #7089b3);
+  background-image: -moz-linear-gradient(top, #a5b8da, #7089b3);
+  background-image: -ms-linear-gradient(top, #a5b8da, #7089b3);
+  background-image: -o-linear-gradient(top, #a5b8da, #7089b3);
+  background-image: linear-gradient(top, #a5b8da, #7089b3);
+  border-top: 1px solid #758fba;
+  border-right: 1px solid #6c84ab;
+  border-bottom: 1px solid #5c6f91;
+  border-left: 1px solid #6c84ab;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+  border-radius: 18px;
+  -webkit-box-shadow: inset 0 1px 0 0 #aec3e5;
+  -moz-box-shadow: inset 0 1px 0 0 #aec3e5;
+  -ms-box-shadow: inset 0 1px 0 0 #aec3e5;
+  -o-box-shadow: inset 0 1px 0 0 #aec3e5;
+  box-shadow: inset 0 1px 0 0 #aec3e5;
+  color: #fff;
+  font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  line-height: 1;
+  padding: 8px 0;
+  text-align: center;
+  text-shadow: 0 -1px 1px #64799e;
+  text-transform: uppercase;
+  width: 150px; }
+  button.blue-pill:hover {
+    background-color: #9badcc;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#9badcc), to(#687fa6));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #9badcc, #687fa6);
+    background-image: -moz-linear-gradient(top, #9badcc, #687fa6);
+    background-image: -ms-linear-gradient(top, #9badcc, #687fa6);
+    background-image: -o-linear-gradient(top, #9badcc, #687fa6);
+    background-image: linear-gradient(top, #9badcc, #687fa6);
+    border-top: 1px solid #6d86ad;
+    border-right: 1px solid #647a9e;
+    border-bottom: 1px solid #546685;
+    border-left: 1px solid #647a9e;
+    -webkit-box-shadow: inset 0 1px 0 0 #a5b9d9;
+    -moz-box-shadow: inset 0 1px 0 0 #a5b9d9;
+    -ms-box-shadow: inset 0 1px 0 0 #a5b9d9;
+    -o-box-shadow: inset 0 1px 0 0 #a5b9d9;
+    box-shadow: inset 0 1px 0 0 #a5b9d9;
+    cursor: pointer; }
+  button.blue-pill:active {
+    border: 1px solid #546685;
+    -webkit-box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
+    -moz-box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
+    -ms-box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
+    -o-box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee;
+    box-shadow: inset 0 0 8px 2px #7e8da6, 0 1px 0 0 #eeeeee; }
 
 
-#userList {
+/* primary styles ===================================================== */
+
+
+html {
+	overflow: scroll;
+}
+
+a {
+	text-decoration: none;
+}
+
+#container {
+	position: relative;
+}
+
+#menu, .story:hover {
+	background-image: url('../img/stylesheet-repeat-x.png');
+}
+
+#menu {
+	background-position: 0px -536px;
+	background-repeat: repeat-x;
+
+	border-bottom: 1px solid rgb(183, 186, 195);
+	height: 40px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+#menu button {
+	margin: 5px;
+}
+
+#main {
+	margin-top: 41px;
+	width: 20000px;
+}
+
+.user {
+	border-right: 1px solid rgb(183, 186, 195);
+	border-bottom: 1px solid rgb(183, 186, 195);
+	float: left;
+	margin: 0;
+	width: 300px;
+}
+
+.user:first-child {
+	border-left: 1px solid rgb(183, 186, 195);
+}
+
+.user h1 {
 	background-color: #E8EBF2;
-	border: rgb(183, 186, 195);
+	border-top: 1px solid rgb(183, 186, 195);
+	border-bottom: 1px solid rgb(183, 186, 195);
+	color: #7F7F7F;
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0;
+	padding: 10px 7px 7px 7px;
 }
 
-#userDetail {
-
+.stories {
+	font-size: 10px;
+	height: 600px;
+	overflow-y: scroll;
 }
 
+a.story {
+	background-position: 0px -132px;
+	background-repeat: repeat-x;
 
+	border-bottom: 1px solid rgb(183, 186, 195);
+	color: black;
+	display: block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 
+.story .favicon {
+	height: 16px;
+	float: left;
+	margin-left: 5px;
+	width: 16px;
+}
 
-
-
+.story .desc {
+	float: left;
+	margin-left: 5px;
+	width: 250px;
+}
 
 
 

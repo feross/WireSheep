@@ -1,6 +1,8 @@
 <!DOCTYPE RCC><RCC version="1.0">
  <qresource>
 	<file>css/style.css</file>
+	<file>img/stylesheet-repeat-x.png</file>
+	<file>img/favicon.gif</file>
 	<file>index.html</file>
 	<file>js/libs/jquery-1.6.2.min.js</file>
 	<file>js/libs/modernizr-2.0.6.min.js</file>
