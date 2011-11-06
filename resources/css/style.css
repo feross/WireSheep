@@ -129,95 +129,97 @@ button.blue-pill {
 
 
 html {
-	overflow: scroll;
+  overflow: scroll;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 #container {
-	position: relative;
+  position: relative;
 }
 
 #menu, .story:hover {
-	background-image: url('../img/stylesheet-repeat-x.png');
+  background-image: url('../img/stylesheet-repeat-x.png');
 }
 
 #menu {
-	background-position: 0px -536px;
-	background-repeat: repeat-x;
+  background-position: 0px -536px;
+  background-repeat: repeat-x;
 
-	border-bottom: 1px solid rgb(183, 186, 195);
-	height: 40px;
-	position: fixed;
-	top: 0;
-	width: 100%;
+  border-bottom: 1px solid rgb(183, 186, 195);
+  height: 40px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 #menu button {
-	margin: 5px;
+  margin: 5px;
 }
 
 #main {
-	margin-top: 41px;
-	width: 20000px;
+  margin-top: 41px;
+  width: 20000px;
 }
 
 .user {
-	border-right: 1px solid rgb(183, 186, 195);
-	border-bottom: 1px solid rgb(183, 186, 195);
-	float: left;
-	margin: 0;
-	width: 300px;
+  border-right: 1px solid rgb(183, 186, 195);
+  border-bottom: 1px solid rgb(183, 186, 195);
+  float: left;
+  margin: 0;
+  width: 300px;
 }
 
 .user:first-child {
-	border-left: 1px solid rgb(183, 186, 195);
+  border-left: 1px solid rgb(183, 186, 195);
 }
 
 .user h1 {
-	background-color: #E8EBF2;
-	border-top: 1px solid rgb(183, 186, 195);
-	border-bottom: 1px solid rgb(183, 186, 195);
-	color: #7F7F7F;
-	font-size: 16px;
-	font-weight: normal;
-	margin: 0;
-	padding: 10px 7px 7px 7px;
+  background-color: #E8EBF2;
+  border-top: 1px solid rgb(183, 186, 195);
+  border-bottom: 1px solid rgb(183, 186, 195);
+  color: #7F7F7F;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+  padding: 10px 7px 7px 7px;
 }
 
 .stories {
-	font-size: 10px;
-	height: 600px;
-	overflow-y: scroll;
+  font-size: 10px;
+  height: 600px;
+  overflow-y: scroll;
 }
 
 a.story {
-	background-position: 0px -132px;
-	background-repeat: repeat-x;
+  background-position: 0px -132px;
+  background-repeat: repeat-x;
 
-	border-bottom: 1px solid rgb(183, 186, 195);
-	color: black;
-	display: block;
-	padding-top: 5px;
-	padding-bottom: 5px;
+  border-bottom: 1px solid rgb(183, 186, 195);
+  color: black;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .story .favicon {
-	height: 16px;
-	float: left;
-	margin-left: 5px;
-	width: 16px;
+  height: 16px;
+  float: left;
+  margin-left: 5px;
+  width: 16px;
 }
 
 .story .desc {
-	float: left;
-	margin-left: 5px;
-	width: 250px;
+  float: left;
+  margin-left: 5px;
+  width: 250px;
 }
 
-
+.story time {
+  display: inline;
+}
 
 
 
