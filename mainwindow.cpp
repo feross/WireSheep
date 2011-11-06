@@ -39,6 +39,7 @@ MainWin::MainWin(QWidget * parent) : QWebView(parent)
 
     // disable same origin
     page()->settings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
+    page()->settings()->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
 
     // Load web content now!
     setUrl(startURL);

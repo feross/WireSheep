@@ -4,24 +4,31 @@ var requestStory = {
 
 	//Applies to requests
 	appliesToPacket: function(packet){
-		return packet['isResponse'] == false &&
-		       packet['method'] == 'GET' &&
-		       packet['path'].indexOf('.css') == -1 &&
-		       packet['path'].indexOf('.js') == -1;
+	  var result = !packet['isResponse'] &&
+		       packet['method'] == 'GET';
+    // alert(packet['isResponse']);
+    // alert(packet['method']);
+           // packet['path'].indexOf('.css') == -1 &&
+           // packet['path'].indexOf('.js') == -1;
+
+		return result;
 	},
 
 	//Just return the url and time
 	renderStory: function(packet){
-		var url = 'http://' + packet['hostname'] + packet['path'];
+	  alert('RENDER STORY');
+		var url = 'http://' + packet['host'] + packet['path'];
 		var now = new Date();
 		var timeStr = now.getHours() + ":" + now.getMinutes();
 
-    $.load(url, function(data) {
+    var title;
+    alert(url);
+    $.get(url, function(data) {
       var dom = $('<div>').html(data);
-      var title = dom.find('title').text();
+      title = dom.find('title').text();
     });
 
-    alert(title);
+    alert('title ' + title);
 
 		var desc = title;
 		return {
