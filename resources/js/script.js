@@ -15,28 +15,24 @@ window.Client = {
 
 	setup: function() {
 		// Hook up the handlePacket Qt event to the Client.handlePacket JS function
-	  Fireflock.handlePacket.connect(this, 'handlePacket');
+	  //Fireflock.handlePacket.connect(this, 'handlePacket');
+		
 	  $('#startCapture').click(function() {
-	    Fireflock.startCapture();
+	    //Fireflock.startCapture();
 	  });
-
+	
 	 	var that = this;
 	  $('#simulatePacket').click(function(){
 			var testPacket = {"type":"request", "path":"/home.php", "userIP":"127.0.0.1", "hostname":"www.nikilster.com"};
 			var testPacket2 = {"type":"request", "path":"/home.php", "userIP":"100.0.0.1", "hostname":"www.nikilster.com"};
 			that.handlePacket(testPacket);
 			that.handlePacket(testPacket2);
-
+			
 	})
 	}
 }
 
 $(function() {
 	Client.setup();
-
-	$("#userTemplate").tmpl({num: 1, name: "Feross"}).appendTo("#main");
-
-	$("#storyTemplate").tmpl({href: "#", favicon: "img/favicon.gif", desc: "Visited <b>Greek prime minister set to form new SDJKHJKLSDHKJLFH - CNN.com</b>."}).appendTo("#user1 .stories");
-
 });
 

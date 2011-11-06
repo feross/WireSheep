@@ -15,4 +15,4 @@ var requestStory = {
 		var timeStr = now.getHours() + ":" + now.getMinutes();
 		return "Clicked to open:" + url + " at " + timeStr;
 	}
-}
+};
