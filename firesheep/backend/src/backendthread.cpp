@@ -42,7 +42,6 @@ void FlockBackend::run()
     return;
   } 
   
-  return;
 }
 
 void received_packet(HttpPacket *packet)

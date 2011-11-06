@@ -31,6 +31,8 @@ private:
 private:
   QNetworkAccessManager* m_network;
   QNetworkDiskCache* m_cache;
+  
+  QThread* m_backend;
 
 };
 
