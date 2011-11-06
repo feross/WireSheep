@@ -1,13 +1,15 @@
 #include <QThread>
+#include <QString>
 #include <string>
+
+using namespace std;
 
 class FlockBackend : public virtual QThread
 {
   Q_OBJECT
-private:
-  void FlockBackend::emitJSON(string data);
-  
 public:
+  void emitJSON(string data);
+  
   virtual void run();
   
 signals:

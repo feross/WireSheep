@@ -27,7 +27,7 @@
 
 #include "json_spirit_writer_template.h"
 
-void received_packet(FlockBackend *back, HttpPacket *packet);
+void received_packet(HttpPacket *packet);
 // void list_interfaces(AbstractPlatform *platform);
 
 static FlockBackend *back;
@@ -40,7 +40,7 @@ void FlockBackend::run()
   string filter("tcp port 80");
 
   try { 
-    HttpSniffer sniffer(iface, filter, received_packet, this);
+    HttpSniffer sniffer(iface, filter, received_packet);
     sniffer.start();
   } catch (exception &e) {
     cerr << e.what() << endl;
@@ -50,7 +50,8 @@ void FlockBackend::run()
 }
 
 void FlockBackend::emitJSON(string data) {
-  emit QString(data);
+  QString qdat(data.c_str());
+  emit onPacket(qdat);
 }
 
 void received_packet(HttpPacket *packet)
@@ -81,6 +82,6 @@ void received_packet(HttpPacket *packet)
   string data = json_spirit::write_string(json_spirit::Value(data_obj), false);
   cout << data << endl;
   
-  back->emitJSON(data)
+  back->emitJSON(data);
   // emit onPacket(QString(data));
 }
