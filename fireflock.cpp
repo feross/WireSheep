@@ -19,8 +19,7 @@ Fireflock::Fireflock(QNetworkDiskCache* netcache, QObject* parent)
     connect(m_backend, SIGNAL( onPacket( QString ) ),
                    this, SLOT( onPacket( QString ) ),
                    Qt::QueuedConnection );
-    
-    m_backend->start();
+
 }
 
 Fireflock::~Fireflock()
@@ -29,14 +28,13 @@ Fireflock::~Fireflock()
 
 void Fireflock::startCapture()
 {
-  QString data = QString("my packet");
-  onPacket(data);
+  // cout << "Button clicked" << endl;
+    m_backend->start();
 }
 
 void Fireflock::stopCapture()
 {
 }
-
 
 void Fireflock::onPacket(QString data)
 {
