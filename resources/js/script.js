@@ -8,6 +8,14 @@ window.Client = {
       data = $.parseJSON(data);
     }
 
+    // Make sure it's not a request from us
+    if (data.userAgent.indexOf("trololol")){
+      return;
+    }
+
+    // Make sure it's not AJAX
+
+
     // Render each story
     for(var i in stories) {
       var story = stories[i];
