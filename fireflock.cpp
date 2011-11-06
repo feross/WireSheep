@@ -23,8 +23,8 @@ Fireflock::~Fireflock()
 
 void Fireflock::startCapture()
 {
-	QString data = QString("my packet");
-	onPacket(data);
+  QString data = QString("my packet");
+  onPacket(data);
 }
 
 void Fireflock::stopCapture()
