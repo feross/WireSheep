@@ -5,7 +5,8 @@ LIBS += -lpcap
 INCLUDEPATH += firesheep/backend/src \
     firesheep/backend/deps \
     firesheep/backend/deps/http-parser \
-    firesheep/backend/deps/json_spirit
+    firesheep/backend/deps/json_spirit \
+    /opt/local/include
 SOURCES = fireflock.cpp \
 	main.cpp \
 	mainwindow.cpp \
