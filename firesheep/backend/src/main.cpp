@@ -97,7 +97,13 @@ int main(int argc, const char *argv[])
 void received_packet(HttpPacket *packet)
 {
   
-  json_spirit::Object data_obj;
+  json_spirit::Object data_obj, header_obj;
+
+  const HeaderMap &headers = packet->headers();
+  for(HeaderMap::const_iterator itr = headers.begin(); itr != headers.end(); ++itr){
+    header_obj.push_back(json_spirit::Pair(itr->first, itr->second));
+  }
+
   
   if(packet->isResponse()) {
     data_obj.push_back(json_spirit::Pair("isResponse",true));
@@ -106,6 +112,8 @@ void received_packet(HttpPacket *packet)
     
     data_obj.push_back(json_spirit::Pair("id",        packet->get_id()));
     data_obj.push_back(json_spirit::Pair("mimeType",  packet->mime_type()));
+
+    data_obj.push_back(json_spirit::Pair("headers", header_obj));
   } else {
     data_obj.push_back(json_spirit::Pair("isResponse",false));
     data_obj.push_back(json_spirit::Pair("serverIP",  packet->to()));
