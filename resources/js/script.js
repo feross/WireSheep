@@ -60,13 +60,15 @@ window.Client = {
       .prependTo("#user"+userIndex+" .stories")
       .slideDown('fast');
 
+    story.colorbox({iframe:true, width:"80%", height:"80%"});
+
   },
 
 	renderUserName: function(userIndex, name) {
 		console.log('setting name to: ' + name);
 		$("#user" + userIndex).find("h1").text(name);
 	},
-	
+
   addUser: function(userIndex) {
     $("#userTemplate").tmpl({
       num: userIndex,
@@ -87,17 +89,11 @@ window.Client = {
 
 $(function() {
   Client.setup();
-  sim();
+  // sim();
 });
 
-function log(msg){
-  //alert(msg);
-  console.log(msg);
-}
-
-
 function sim() {
-  /*var testPacket = {"type":"request", "path":"/home.php", "userIP":"127.0.0.1", "hostname":"www.nikilster.com"};
+  var testPacket = {"type":"request", "path":"/home.php", "userIP":"127.0.0.1", "hostname":"www.nikilster.com"};
   var testPacket2 = {"type":"request", "path":"/watch?v=RF9PFJI_t5I&feature=feedrec_grec_index", "userIP":"100.0.0.1", "hostname":"www.youtube.com"};
   var testPacket3 = {"type":"response", "path":"/watch?v=RF9PFJI_t5I&feature=feedrec_grec_index", "userIP":"100.0.0.1", "hostname":"www.facebook.com", "body":"<div><a class='headerTinymanName' href='test'>Nikil Viswanathan</a></div>"};
 
@@ -106,24 +102,4 @@ function sim() {
   Client.handlePacket(testPacket);
   Client.handlePacket(testPacket);
   Client.handlePacket(testPacket);
-  Client.handlePacket(testPacket2);
-	Client.handlePacket(testPacket3);
-	
-*/
-
-  $.get('sample.log', function(data){
-    var pkts = data.split('\n');
-    log("Loaded "+pkts.length+" packets...");
-    var i = 0;
-    setInterval(function(){
-      var pkt = $.trim(pkts[i]);
-      i++;
-      //ignore empty lines
-      if(pkt.length == 0)
-        return;
-      Client.handlePacket(pkt);
-    }, 1000);
-  });
-}
-
 }

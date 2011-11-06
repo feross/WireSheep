@@ -37,13 +37,10 @@ MainWin::MainWin(QWidget * parent) : QWebView(parent)
     QUrl startURL = QUrl("qrc:/index.html");
 
     // Load web content now!
-		setUrl(startURL);
-
-    // m_fireflock->startCapture();
+    setUrl(startURL);
 }
 
 void MainWin::addJSObject() {
     // Add fireflock to JavaScript Frame as member "fireflock".
     page()->mainFrame()->addToJavaScriptWindowObject(QString("Fireflock"), m_fireflock);
 }
-
