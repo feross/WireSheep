@@ -1,5 +1,5 @@
 //Set up the renderers
-stories = [requestStory, youtubeStory];
+stories = [requestStory];
 
 
 window.Client = {
@@ -45,9 +45,9 @@ window.Client = {
     }
 
 		//Try to get the identity
-		if(identifyUserFilter.appliesToPacket(data)){
-			this.renderUserName(users.getUserIndex(data), identifyUserFilter.getName(data));
-		}
+    // if(identifyUserFilter.appliesToPacket(data)){
+    //  this.renderUserName(users.getUserIndex(data), identifyUserFilter.getName(data));
+    // }
   },
 
   // realRequest: function(packet) {
@@ -104,8 +104,8 @@ $(function() {
   // sim();
 });
 
-function sim() {
-  var testPacket = {"isResponse":false,"serverIP":"87.238.50.204:80","userIP":"10.32.142.68:53598","method":"GET","path":"/4.7-snapshot/qwebsettings.html","query":"","host":"doc.qt.nokia.com","cookies":"__switchTo5x=7; __unam=f59ceff-133752ee443-5b04aad3-2; __utma=262969676.49335727.1320514537.1320518103.1320520985.3; __utmc=262969676; __utmz=262969676.1320520985.3.3.utmcsr=blog.qt.nokia.com|utmccn=(referral)|utmcmd=referral|utmcct=/2010/06/03/qt-is-going-over-the-top-to-bring-online-video-to-connected-tvs/; __utma=15568163.1687546187.1320514529.1320543628.1320547915.6; __utmb=15568163.7.10.1320547915; __utmc=15568163; __utmz=15568163.1320547915.6.4.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.106 Safari/535.2"};
+function sim(packet) {
+  // packet = packet || {"isResponse":false,"serverIP":"87.238.50.204:80","userIP":"10.32.142.68:53598","method":"GET","path":"/4.7-snapshot/qwebsettings.html","query":"","host":"doc.qt.nokia.com","cookies":"__switchTo5x=7; __unam=f59ceff-133752ee443-5b04aad3-2; __utma=262969676.49335727.1320514537.1320518103.1320520985.3; __utmc=262969676; __utmz=262969676.1320520985.3.3.utmcsr=blog.qt.nokia.com|utmccn=(referral)|utmcmd=referral|utmcct=/2010/06/03/qt-is-going-over-the-top-to-bring-online-video-to-connected-tvs/; __utma=15568163.1687546187.1320514529.1320543628.1320547915.6; __utmb=15568163.7.10.1320547915; __utmc=15568163; __utmz=15568163.1320547915.6.4.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.106 Safari/535.2"};
 
-  Client.handlePacket(testPacket);
+  Client.handlePacket(packet);
 }

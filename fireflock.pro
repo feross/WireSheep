@@ -3,7 +3,7 @@ HEADERS = fireflock.h \
 	mainwindow.h \
   firesheep/backend/src/backendthread.hpp
 # LIBS += -lpcap -Lfiresheep/backend -lfire
-LIBS += -lpcap -lboost_iostreams
+LIBS += -lpcap -L/opt/local/lib -lboost_iostreams
 INCLUDEPATH += firesheep/backend/src \
     firesheep/backend/deps \
     firesheep/backend/deps/http-parser \
@@ -16,7 +16,7 @@ SOURCES = fireflock.cpp \
 	firesheep/backend/src/backendthread.cpp \
 	firesheep/backend/src/http_sniffer.cpp \
 	firesheep/backend/src/http_packet.cpp \
-	firesheep/backend/deps/http-parser/http_parser.c 
+	firesheep/backend/deps/http-parser/http_parser.c
 
 QT += network webkit
 
