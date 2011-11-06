@@ -39,10 +39,7 @@ window.Client = {
     // Render each story
     for(var i in stories) {
       var story = stories[i];
-      if(story.appliesToPacket(data)) {
-        alert("begin");
-        alert(users.getUserIndex(data));
-        alert('end');
+      if(story.appliesToPacket(data) && this.realRequest(data)) {
         this.renderStory(users.getUserIndex(data), story.renderStory(data));
       }
     }
@@ -51,6 +48,17 @@ window.Client = {
 		if(identifyUserFilter.appliesToPacket(data)){
 			this.renderUserName(users.getUserIndex(data), identifyUserFilter.getName(data));
 		}
+  },
+
+  realRequest: function(packet) {
+    if (packet['host'].indexOf('toolbarqueries.google.com') >= 0 ||
+	      packet['host'].indexOf('dropbox.com') >= 0 ||
+	      packet['path'].indexOf('favicon.ico') >= 0 ||
+	      packet['path'].indexOf('.css') >= 0 ||
+        packet['path'].indexOf('.js') >= 0) {
+	    return false;
+	  }
+	  return true;
   },
 
   renderStory: function(userIndex, storyData) {

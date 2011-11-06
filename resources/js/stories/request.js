@@ -6,18 +6,13 @@ var requestStory = {
 	appliesToPacket: function(packet){
 	  var result = !packet['isResponse'] &&
 		       packet['method'] == 'GET';
-    // alert(packet['isResponse']);
-    // alert(packet['method']);
-           // packet['path'].indexOf('.css') == -1 &&
-           // packet['path'].indexOf('.js') == -1;
-
 		return result;
 	},
 
 	//Just return the url and time
 	renderStory: function(packet){
-	  alert('RENDER STORY');
 		var url = 'http://' + packet['host'] + packet['path'];
+
 		var now = new Date();
 		var timeStr = now.getHours() + ":" + now.getMinutes();
 
@@ -30,7 +25,7 @@ var requestStory = {
 
     alert('title ' + title);
 
-		var desc = title;
+		var desc = url;
 		return {
 			href: url,
 			favicon: "img/favicon.gif",
