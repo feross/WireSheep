@@ -4,16 +4,26 @@ var requestStory = {
 
 	//Applies to requests
 	appliesToPacket: function(packet){
-		return packet['type'] == "request";
+		return packet['isResponse'] == false &&
+		       packet['method'] == 'GET' &&
+		       packet['path'].indexOf('.css') == -1 &&
+		       packet['path'].indexOf('.js') == -1;
 	},
 
 	//Just return the url and time
 	renderStory: function(packet){
-		var url = packet['hostname'] + packet['path'];
+		var url = 'http://' + packet['hostname'] + packet['path'];
 		var now = new Date();
 		var timeStr = now.getHours() + ":" + now.getMinutes();
 
-		var desc = "Visited <b>Greek prime minister set to form new SDJKHJKLSDHKJLFH - CNN.com</b>.";
+    $.load(url, function(data) {
+      var dom = $('<div>').html(data);
+      var title = dom.find('title').text();
+    });
+
+    alert(title);
+
+		var desc = title;
 		return {
 			href: url,
 			favicon: "img/favicon.gif",

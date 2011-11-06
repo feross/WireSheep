@@ -4,6 +4,7 @@
 #include <QWebFrame>
 #include <QWebElementCollection>
 #include <QNetworkDiskCache>
+#include <QWebSettings>
 
 class UserAgentWebPage : public QWebPage {
   QString userAgentForUrl(const QUrl &url ) const {
@@ -35,6 +36,9 @@ MainWin::MainWin(QWidget * parent) : QWebView(parent)
 
     // qrc:// URLs refer to resources. See fireflock.qrc
     QUrl startURL = QUrl("qrc:/index.html");
+
+    // disable same origin
+    page()->settings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
 
     // Load web content now!
     setUrl(startURL);

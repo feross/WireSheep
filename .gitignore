@@ -5,5 +5,6 @@ fireflock
 *.o
 moc_fireflock.cpp
 moc_mainwindow.cpp
+moc_backendthread.cpp
 qrc_fireflock.cpp
 Makefile
