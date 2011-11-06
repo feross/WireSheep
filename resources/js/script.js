@@ -1,5 +1,5 @@
 //Set up the renderers
-stories = [requestStory];
+stories = [requestStory, youtubeStory];
 
 
 window.Client = {
