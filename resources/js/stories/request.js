@@ -1,6 +1,5 @@
 //Base story
 //Returns the url the user was trying to reach for requests
-
 var requestStory = {
 
 	//Applies to requests
