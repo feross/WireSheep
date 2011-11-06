@@ -191,6 +191,23 @@ int HttpPacket::headers_complete_cb()
     string path = str.str();
     
     m_bodystream.open(path.c_str(), ios_base::binary);
+    cout << "ENCODING: " << get_header("content-encoding") << endl;    
+    // string encoding = get_header("content-encoding");
+    // if(encoding == "gzip") {
+    //   cout << "Using gzip on id " << m_id << endl;
+    //   zlib_params params;
+    //   params.noheader = true;
+    //   m_filterstream.push(zlib_decompressor(params));
+    // } else if(encoding == "deflate") {
+    //   cout << "Using deflate on id " << m_id << endl;
+    //   zlib_params params;
+    //   params.noheader = true;
+    //   m_filterstream.push(zlib_decompressor(params));
+    // } else if(encoding == "bzip2") {
+    //   cout << "Using bzip2 on id " << m_id << endl;
+    //   m_filterstream.push(bzip2_decompressor());
+    // }
+    m_filterstream.push(m_bodystream);
   }
   
   return 0;
@@ -201,6 +218,7 @@ int HttpPacket::message_complete_cb()
   m_complete = true;
   
   if(isResponse()) {
+    m_filterstream.pop();
     m_bodystream.close();
   }
   
@@ -209,6 +227,6 @@ int HttpPacket::message_complete_cb()
 
 int HttpPacket::body_cb(const char *buf, size_t len)
 {
-  m_bodystream.write(buf, len);  
+  m_filterstream.write(buf, len);  
   return 0;
 }

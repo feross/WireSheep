@@ -3,7 +3,7 @@ HEADERS = fireflock.h \
 	mainwindow.h \
   firesheep/backend/src/backendthread.hpp
 # LIBS += -lpcap -Lfiresheep/backend -lfire
-LIBS += -lpcap 
+LIBS += -lpcap -lboost_iostreams
 INCLUDEPATH += firesheep/backend/src \
     firesheep/backend/deps \
     firesheep/backend/deps/http-parser \

@@ -83,7 +83,7 @@ void received_packet(HttpPacket *packet)
   }
   
   string data = json_spirit::write_string(json_spirit::Value(data_obj), false);
-  // cout << data << endl;
+  cout << data << endl;
   
   back->emitJSON(data);
   // emit onPacket(QString(data));

@@ -30,9 +30,15 @@
 #include <map>
 #include <vector>
 #include <boost/algorithm/string.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
+#include <boost/iostreams/filter/zlib.hpp>
+#include <boost/iostreams/filter/bzip2.hpp>
+
 #include "http-parser/http_parser.h"
 
 using namespace std;
+using namespace boost::iostreams;
 
 #define HTTP_PARSER_DATA_CALLBACK(NAME)                                             \
 static int NAME##_cb_wrapper (http_parser *parser, const char *buf, size_t len) {   \
@@ -86,6 +92,7 @@ private:
   bool                 m_complete;
   
   ofstream             m_bodystream;
+  filtering_ostream m_filterstream;
   int                  m_id;
 
   HTTP_PARSER_DATA_CALLBACK(url);
