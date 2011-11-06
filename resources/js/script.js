@@ -1,5 +1,5 @@
 //Set up the renderers
-stories = [requestStory];
+stories = [requestStory, youtubeStory];
 
 
 window.Client = {
@@ -57,7 +57,7 @@ $(function() {
 
 function sim() {
   var testPacket = {"type":"request", "path":"/home.php", "userIP":"127.0.0.1", "hostname":"www.nikilster.com"};
-  var testPacket2 = {"type":"request", "path":"/home.php", "userIP":"100.0.0.1", "hostname":"www.nikilster.com"};
+  var testPacket2 = {"type":"request", "path":"/watch?v=RF9PFJI_t5I&feature=feedrec_grec_index", "userIP":"100.0.0.1", "hostname":"www.youtube.com"};
   Client.handlePacket(testPacket);
   Client.handlePacket(testPacket);
   Client.handlePacket(testPacket);
