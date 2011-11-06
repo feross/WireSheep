@@ -1,3 +1,4 @@
+
 window.Client = {
   handlePacket: function(data) {
     alert(data);
