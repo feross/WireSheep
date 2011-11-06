@@ -5,30 +5,26 @@ var requestStory = {
 	//Applies to requests
 	appliesToPacket: function(packet){
 	  var result = !packet['isResponse'] &&
-		       packet['method'] == 'GET';
+		       packet['method'] == 'GET' &&
+		       packet['host'].indexOf('google.com') >= 0 &&
+		       packet['query'].indexOf('&q=') >= 0;
 		return result;
 	},
 
 	//Just return the url and time
-	renderStory: function(packet){
+	renderStory: function(packet) {
 		var url = 'http://' + packet['host'] + packet['path'];
 
 		var now = new Date();
 		var timeStr = now.getHours() + ":" + now.getMinutes();
 
-    var title;
-    alert(url);
-    $.get(url, function(data) {
-      var dom = $('<div>').html(data);
-      title = dom.find('title').text();
-    });
+    var term = packet['query'].match(/&q=(.+?)&/)[1];
 
-    alert('title ' + title);
+		var desc = 'Searched for <b>' + term + '</b>';
 
-		var desc = url;
 		return {
-			href: url,
-			favicon: "img/favicon.gif",
+			href: 'http://www.google.com/search?q=' + term,
+			favicon: "http://" + packet['host'] + "/favicon.ico",
 			desc: desc,
 			time: timeStr
 		}

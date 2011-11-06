@@ -49,9 +49,9 @@ void HttpSniffer::start()
   
   handle = pcap_create(m_iface.c_str(), errbuf);
   pcap_set_snaplen(handle, SNAP_LEN);
-  // pcap_set_promisc(handle, 1);
-  // // Next line will fail on Ethernet!
-  // pcap_set_rfmon(handle, 1);
+  pcap_set_promisc(handle, 1);
+  // Next line will fail on Ethernet!
+  pcap_set_rfmon(handle, 1);
   pcap_set_timeout(handle, 1000);
   pcap_activate(handle);
   

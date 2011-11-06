@@ -8,8 +8,6 @@ window.Client = {
   requestMap: {},
 
   handlePacket: function(data) {
-    $('body').append($('<div>').text(data));
-
     if (typeof data == "string") {
       data = $.parseJSON(data);
     }
@@ -36,10 +34,12 @@ window.Client = {
     // Make sure it's not AJAX
     // TODO
 
+    $('body').append($('<div>').text(data));
+
     // Render each story
     for(var i in stories) {
       var story = stories[i];
-      if(story.appliesToPacket(data) && this.realRequest(data)) {
+      if(story.appliesToPacket(data)) {
         this.renderStory(users.getUserIndex(data), story.renderStory(data));
       }
     }
@@ -50,16 +50,16 @@ window.Client = {
 		}
   },
 
-  realRequest: function(packet) {
-    if (packet['host'].indexOf('toolbarqueries.google.com') >= 0 ||
-	      packet['host'].indexOf('dropbox.com') >= 0 ||
-	      packet['path'].indexOf('favicon.ico') >= 0 ||
-	      packet['path'].indexOf('.css') >= 0 ||
-        packet['path'].indexOf('.js') >= 0) {
-	    return false;
-	  }
-	  return true;
-  },
+  // realRequest: function(packet) {
+  //   if (packet['host'].indexOf('toolbarqueries.google.com') >= 0 ||
+  //        packet['host'].indexOf('dropbox.com') >= 0 ||
+  //        packet['path'].indexOf('favicon.ico') >= 0 ||
+  //        packet['path'].indexOf('.css') >= 0 ||
+  //       packet['path'].indexOf('.js') >= 0) {
+  //      return false;
+  //    }
+  //    return true;
+  // },
 
   renderStory: function(userIndex, storyData) {
     if ($("#user"+userIndex).length == 0) {
