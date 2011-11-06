@@ -5,6 +5,12 @@
 #include <QWebElementCollection>
 #include <QNetworkDiskCache>
 
+class UserAgentWebPage : public QWebPage {
+  QString userAgentForUrl(const QUrl &url ) const {
+    return this->QWebPage::userAgentForUrl(url) + QString("trololololo");
+  }
+};
+
 /*
  * Default Constructor
  */
@@ -15,6 +21,9 @@ MainWin::MainWin(QWidget * parent) : QWebView(parent)
     m_cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation) + "/fireflock");
     m_cache->setMaximumCacheSize(1000000); //set the cache to 10megs
     m_network->setCache(m_cache);
+
+    UserAgentWebPage *p = new UserAgentWebPage();
+    setPage(p);
     page()->setNetworkAccessManager(m_network);
 
     // The object we will expose to JavaScript engine:
