@@ -40,6 +40,11 @@ window.Client = {
       if(story.appliesToPacket(data))
         this.renderStory(users.getUserIndex(data), story.renderStory(data));
     }
+
+		//Try to get the identity
+		if(identifyUserFilter.appliesToPacket(data)){
+			this.renderUserName(users.getUserIndex(data), identifyUserFilter.getName(data));
+		}
   },
 
   renderStory: function(userIndex, storyData) {
@@ -57,6 +62,11 @@ window.Client = {
 
   },
 
+	renderUserName: function(userIndex, name) {
+		console.log('setting name to: ' + name);
+		$("#user" + userIndex).find("h1").text(name);
+	},
+	
   addUser: function(userIndex) {
     $("#userTemplate").tmpl({
       num: userIndex,
@@ -89,12 +99,17 @@ function log(msg){
 function sim() {
   /*var testPacket = {"type":"request", "path":"/home.php", "userIP":"127.0.0.1", "hostname":"www.nikilster.com"};
   var testPacket2 = {"type":"request", "path":"/watch?v=RF9PFJI_t5I&feature=feedrec_grec_index", "userIP":"100.0.0.1", "hostname":"www.youtube.com"};
+  var testPacket3 = {"type":"response", "path":"/watch?v=RF9PFJI_t5I&feature=feedrec_grec_index", "userIP":"100.0.0.1", "hostname":"www.facebook.com", "body":"<div><a class='headerTinymanName' href='test'>Nikil Viswanathan</a></div>"};
+
   Client.handlePacket(testPacket);
   Client.handlePacket(testPacket);
   Client.handlePacket(testPacket);
   Client.handlePacket(testPacket);
   Client.handlePacket(testPacket);
-  Client.handlePacket(testPacket2);*/
+  Client.handlePacket(testPacket2);
+	Client.handlePacket(testPacket3);
+	
+*/
 
   $.get('sample.log', function(data){
     var pkts = data.split('\n');
@@ -111,3 +126,4 @@ function sim() {
   });
 }
 
+}

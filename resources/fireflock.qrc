@@ -8,6 +8,7 @@
 	<file>js/libs/modernizr-2.0.6.min.js</file>
 	<file>js/stories/request.js</file>
 	<file>js/stories/youtube.js</file>
+	<file>js/identifyUser.js</file>
 	<file>js/plugins.js</file>
 	<file>js/script.js</file>
 </qresource>
