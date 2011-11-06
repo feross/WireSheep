@@ -23,14 +23,20 @@
 #include "backendthread.hpp"
 #include "http_sniffer.hpp"
 #include "http_packet.hpp"
+#include <boost/bind.hpp>
 
 #include "json_spirit_writer_template.h"
 
 void received_packet(HttpPacket *packet);
 // void list_interfaces(AbstractPlatform *platform);
 
+static FlockBackend *back;
+
 void FlockBackend::run() 
 {
+  cout << "Thread started" << endl;
+  back = this;
+  
   string iface("en1");
   string filter("tcp port 80");
 
@@ -42,6 +48,13 @@ void FlockBackend::run()
     return;
   } 
   
+}
+
+void FlockBackend::emitJSON(string data) {
+  QString qdat(data.c_str());
+  emit onPacket(qdat);
+  
+  cout << "Emitting!" << endl;
 }
 
 void received_packet(HttpPacket *packet)
@@ -70,5 +83,8 @@ void received_packet(HttpPacket *packet)
   }
   
   string data = json_spirit::write_string(json_spirit::Value(data_obj), false);
-  cout << data << endl;
+  // cout << data << endl;
+  
+  back->emitJSON(data);
+  // emit onPacket(QString(data));
 }

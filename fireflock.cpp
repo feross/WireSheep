@@ -3,7 +3,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkDiskCache>
 #include "fireflock.h"
-// #include "backendthread.hpp"
+#include "backendthread.hpp"
+#include <iostream>
 
 Fireflock::Fireflock(QNetworkDiskCache* netcache, QObject* parent)
     : QObject(parent), m_cache(netcache)
@@ -13,8 +14,12 @@ Fireflock::Fireflock(QNetworkDiskCache* netcache, QObject* parent)
     m_network = new QNetworkAccessManager(this);
     m_network->setCache(m_cache);
 
-    // m_backend = new FlockBackend();
-    // m_backend->start();
+    m_backend = new FlockBackend();
+    
+    connect(m_backend, SIGNAL( onPacket( QString ) ),
+                   this, SLOT( onPacket( QString ) ),
+                   Qt::QueuedConnection );
+
 }
 
 Fireflock::~Fireflock()
@@ -23,8 +28,8 @@ Fireflock::~Fireflock()
 
 void Fireflock::startCapture()
 {
-  QString data = QString("my packet");
-  onPacket(data);
+  // cout << "Button clicked" << endl;
+    m_backend->start();
 }
 
 void Fireflock::stopCapture()
@@ -33,5 +38,5 @@ void Fireflock::stopCapture()
 
 void Fireflock::onPacket(QString data)
 {
-    emit handlePacket(data);
+  emit handlePacket(data);
 }

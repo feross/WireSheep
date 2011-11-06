@@ -19,14 +19,13 @@ public:
 public slots:
 	void startCapture();
 	void stopCapture();
+	
+  void onPacket(QString data);
 
 signals:
 	void handlePacket(QString data);
 
 private slots:
-
-private:
-	void onPacket(QString data);
 
 private:
   QNetworkAccessManager* m_network;
