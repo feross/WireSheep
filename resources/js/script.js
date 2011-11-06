@@ -13,8 +13,8 @@ window.Client = {
     }
 
     //Match requests and responses
-    var sip = data.serverIP.substring(0, data.serverIP.indexOf(":"));
-    var uip = data.userIP.substring(0, data.userIP.indexOf(":"));
+    var sip = data.serverIP; //.substring(0, data.serverIP.indexOf(":"));
+    var uip = data.userIP; //.substring(0, data.userIP.indexOf(":"));
     var key = "server"+sip+"user"+uip;
     if(data.isResponse){
       data.request = Client.requestMap[key];
