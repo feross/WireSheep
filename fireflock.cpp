@@ -31,6 +31,7 @@ void Fireflock::stopCapture()
 {
 }
 
+
 void Fireflock::onPacket(QString data)
 {
     emit handlePacket(data);
