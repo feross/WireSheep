@@ -39,7 +39,7 @@ MainWin::MainWin(QWidget * parent) : QWebView(parent)
     // Load web content now!
 		setUrl(startURL);
 
-    // m_fireflock->startCapture();
+    m_fireflock->startCapture();
 }
 
 void MainWin::addJSObject() {

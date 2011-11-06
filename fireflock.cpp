@@ -28,7 +28,7 @@ Fireflock::~Fireflock()
 
 void Fireflock::startCapture()
 {
-  // cout << "Button clicked" << endl;
+    cout << "Button clicked" << endl;
     m_backend->start();
 }
 
