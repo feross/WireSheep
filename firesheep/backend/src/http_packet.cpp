@@ -35,8 +35,8 @@ HttpPacket::HttpPacket(string from, string to)
   m_settings.on_headers_complete = headers_complete_cb_wrapper;
   m_settings.on_message_complete = message_complete_cb_wrapper;
   m_settings.on_body             = body_cb_wrapper;
-  
-  http_parser_init(&m_parser, HTTP_BOTH);  
+
+  http_parser_init(&m_parser, HTTP_BOTH);
   m_parser.data = this;
 }
 
@@ -104,7 +104,7 @@ string HttpPacket::mime_type()
   return get_header("content-type");
 }
 
-HeaderMap HttpPacket::headers() 
+HeaderMap HttpPacket::headers()
 {
   return m_headers;
 }
@@ -121,7 +121,7 @@ void HttpPacket::add_header(string name, string value)
   if (iter == m_headers.end()) {
     m_headers[name] = value;
   } else {
-    // FIXME: Technically this is allowed in certain situations, but I doubt 
+    // FIXME: Technically this is allowed in certain situations, but I doubt
     // any browsers would do this.
     // http://github.com/ry/node/blob/master/lib/http.js#L219
     cerr << "Ignoring duplicate header: " << name << endl;
@@ -131,7 +131,7 @@ void HttpPacket::add_header(string name, string value)
 }
 
 string HttpPacket::get_header(string name)
-{ 
+{
   HeaderMap::iterator iter;
   iter = m_headers.find(name);
   if (iter != m_headers.end())
@@ -151,20 +151,20 @@ int HttpPacket::query_string_cb(const char *buf, size_t len)
   m_query.append(buf, len);
   return 0;
 }
-  
+
 int HttpPacket::header_field_cb(const char *buf, size_t len)
 {
   string str(buf, len);
   boost::to_lower(str);
-  
+
   if (!m_tmp_header_value.empty()) {
     add_header(m_tmp_header_name, m_tmp_header_value);
     m_tmp_header_name.clear();
     m_tmp_header_value.clear();
   }
-  
+
   m_tmp_header_name.append(str);
-  
+
   return 0;
 }
 
@@ -175,25 +175,25 @@ int HttpPacket::header_value_cb(const char *buf, size_t len)
 }
 
 int HttpPacket::headers_complete_cb()
-{ 
+{
   if (!m_tmp_header_value.empty()) {
     add_header(m_tmp_header_name, m_tmp_header_value);
     m_tmp_header_name.clear();
     m_tmp_header_value.clear();
   }
   // return 1; // Skip body
-  
+
   if(isResponse()) {
     stringstream str;
     str << "/tmp/fireflock/";
     str << m_id;
-    
+
     string path = str.str();
-    
+
     m_bodystream.open(path.c_str(), ios_base::binary);
-    cout << "ID: " << m_id << " ENCODING: " << get_header("content-encoding") << endl;    
+    /*cout << "ID: " << m_id << " ENCODING: " << get_header("content-encoding") << endl;
     string encoding = get_header("content-encoding");
-    if(encoding == "gzip") {
+      if(encoding == "gzip") {
       cout << "Using gzip on id " << m_id << endl;
       m_filterstream.push(gzip_decompressor());
     } else if(encoding == "deflate") {
@@ -202,17 +202,17 @@ int HttpPacket::headers_complete_cb()
     } else if(encoding == "bzip2") {
       cout << "Using bzip2 on id " << m_id << endl;
       m_filterstream.push(bzip2_decompressor());
-    }
+    }*/
     m_filterstream.push(m_bodystream);
   }
-  
+
   return 0;
 }
 
 int HttpPacket::message_complete_cb()
 {
   m_complete = true;
-  
+
   try {
     if(isResponse()) {
       m_filterstream.pop();

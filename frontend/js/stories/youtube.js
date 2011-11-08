@@ -16,7 +16,7 @@ var youtubeStory = {
 
 	renderStory: function(packet){
     // var url = "http://" + packet['hostname'] + packet['path'];
-		var favicon = "img/favicon.gif";
+		var favicon = "http://www.youtube.com/favicon.ico";
 
 		var videoID = this.getVideoID(packet['query']);
 

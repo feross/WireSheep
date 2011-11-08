@@ -22,7 +22,7 @@ var requestStory = {
 
 		return {
 			href: '#',
-			favicon: 'http://' + packet['host'] + '/favicon.gif',
+			favicon: 'http://' + packet['host'] + '/favicon.ico',
 			desc: desc
 		}
 	}

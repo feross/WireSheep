@@ -1,6 +1,7 @@
 //Set up the renderers
 stories = [requestStory, youtubeStory];
 
+window.onerror = function() { return true; };
 
 window.Client = {
   //maps each client-server pair to the most recent request from that client to that server
