@@ -20,4 +20,4 @@ SOURCES = fireflock.cpp \
 
 QT += network webkit
 
-RESOURCES = fireflock.qrc
+RESOURCES = ../frontend/fireflock.qrc
