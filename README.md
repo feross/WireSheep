@@ -1,12 +1,12 @@
-FireShark
+WireSheep
 =========
 
-Wireshark + Firesheep = FireShark
+[Wireshark](http://www.wireshark.org/) + [Firesheep](http://codebutler.com/firesheep) = WireSheep
 ---------------------------------
 
-FireShark lets you sniff packets on an open WiFi network. Instead of just stealing login cookies, like Firesheep, it lets you see traffic in realtime, like Wireshark.
+WireSheep lets you sniff packets on an open WiFi network. Instead of just stealing login cookies, like Firesheep, it lets you see traffic in realtime, like Wireshark.
 
-Fireshark shows you each user on the network and all the HTTP requests they're making. 
+WireSheep shows you each user on the network and all the HTTP requests they're making. 
 
 Features 
 --------
