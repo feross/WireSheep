@@ -1,4 +1,5 @@
 WireSheep
+by [Feross Aboukhadijeh](https://github.com/feross) & [John Hiesey](https://github.com/jhiesey) & [Daniel Posch](https://github.com/dcposch) & [Nikil Viswanathan](https://github.com/nikilster)
 =========
 
 [Wireshark](http://www.wireshark.org/) + [Firesheep](http://codebutler.com/firesheep) = WireSheep
