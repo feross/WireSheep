@@ -46,16 +46,16 @@ Go to the 'qt' dir.
 > cd qt
 
 On Mac OS X:
-> qmake -spec macx-g++
-> make clean all
+> qmake -spec macx-g++  
+> make clean all  
 > open fireflock.app
 
 On Linux/Unix:
-> qmake
-> make clean all
+> qmake  
+> make clean all  
 > ./fireflock
 
 On Windows:
-> qmake
-> nmake clean all
+> qmake  
+> nmake clean all  
 > debug\fireflock.exe
