@@ -2,8 +2,7 @@ TEMPLATE = app
 HEADERS = fireflock.h \
 	mainwindow.h \
   ../backend/src/backendthread.hpp
-# LIBS += -lpcap -L../backend -lfire
-LIBS += -lpcap -L/opt/local/lib -lboost_iostreams
+LIBS += -lpcap -lboost_iostreams-mt
 INCLUDEPATH += ../backend/src \
     ../backend/deps \
     ../backend/deps/http-parser \

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class FlockBackend : public virtual QThread
+class FlockBackend : public QThread
 {
   Q_OBJECT
 public:
