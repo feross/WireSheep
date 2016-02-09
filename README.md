@@ -23,7 +23,7 @@ Feature ideas
 
 These are things we might implement soon.
 
-* "Follow mode": click on a username to follow just them. Get a big <iframe> that shows whatever they're currently seeing.
+* "Follow mode": click on a username to follow just them. Get a big `<iframe>` that shows whatever they're currently seeing.
 * Firesheep's original functionality: allow filters (eg the FB filter) to scrape session cookies. Provide a list of hijackable sessions.
 * Google filter: show each Google query a user enters.
 * Hacker News filter: eg replace "User 4" with "dcposch".
